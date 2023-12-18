@@ -1,0 +1,8 @@
+.password-toggle {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 20%;
+    left: 12px;
+    cursor: pointer;
+}
