@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('dashboard/dist/css/adminlte.min.css') }}">
     @yield('css')
     <!-- Bootstrap 4 RTL -->
-    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard/dist/css/bootstrap.min.css') }}">
     <!-- Custom style for RTL -->
     <link rel="stylesheet" href="{{ asset('dashboard/dist/css/custom.css') }}">
 </head>
@@ -49,7 +49,7 @@
     </script>
     @yield('js')
     <!-- Bootstrap 4 rtl -->
-    <script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
+    <script src="{{asset("dashboard/dist/js/bootstrap.min.js")}}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
