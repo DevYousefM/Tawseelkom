@@ -83,7 +83,7 @@ class UserOrderController extends Controller
         $stu = $response["success"];
         $payment_db = UserOrder::where("payment_id", $response["payment_id"])->first();
         if ($response["success"]) {
-            $payment_db->update(["status" => "تم الدفع"]);
+            $payment_db->update(["payment_status" => "تم الدفع"]);
         }
         return view("payment_status", compact("msg"), compact("stu"));
     }
