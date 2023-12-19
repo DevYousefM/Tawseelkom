@@ -16,6 +16,7 @@ class UserOrder extends Model
         "price",
         "who_pay",
         "payment_status",
+        "payment_id",
         "status",
         "recipient_name",
         "recipient_phone",

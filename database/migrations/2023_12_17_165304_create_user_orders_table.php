@@ -19,6 +19,7 @@ return new class extends Migration
             // Payment data
             $table->string("who_pay");
             $table->string("payment_status")->default("غير مدفوع");
+            $table->string("payment_id")->nullable();
             // Order data
             $table->string("status")->default("قيد المراجعة");
             // Recipient data

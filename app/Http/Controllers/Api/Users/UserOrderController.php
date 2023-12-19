@@ -10,6 +10,7 @@ use App\Traits\ApiResponse;
 use App\Traits\ErrorsResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Nafezly\Payments\Classes\TapPayment;
 
 class UserOrderController extends Controller
 {
@@ -26,7 +27,7 @@ class UserOrderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "from_area_id" => "required|exists:areas,id",
-            "to_areas_id" => "required|exists:area,id",
+            "to_area_id" => "required|exists:areas,id",
             "shipment_type_id" => "required|exists:shipment_types,id",
             "who_pay" => "required|in:المرسل,المستلم",
             "recipient_name" => "required|string",
@@ -58,6 +59,32 @@ class UserOrderController extends Controller
         ];
         // Store Data
         $order = UserOrder::create($order_data);
-        return $this->apiResponse("order", $order_data, "User order created", 201);
+        if ($request->who_pay === "المرسل") {
+            $payment = new TapPayment();
+            $response = $payment->setUserId($user->id)
+                ->setUserFirstName($user->name)
+                ->setUserLastName(" ")
+                ->setUserEmail($user->email)
+                ->setUserPhone($user->phone)
+                ->setAmount($route->price)
+                ->pay();
+            $order->update([
+                "payment_id" => $response["payment_id"],
+            ]);
+            return $response;
+        }
+        return $this->apiResponse("order", $order, "User order created", 201);
+    }
+    public function verifyPayment(Request $request)
+    {
+        $payment = new TapPayment();
+        $response = $payment->verify($request);
+        $msg = $response["message"];
+        $stu = $response["success"];
+        $payment_db = UserOrder::where("payment_id", $response["payment_id"])->first();
+        if ($response["success"]) {
+            $payment_db->update(["status" => "تم الدفع"]);
+        }
+        return view("payment_status", compact("msg"), compact("stu"));
     }
 }
