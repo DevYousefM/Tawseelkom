@@ -234,5 +234,8 @@ return [
         "who_pay" => "من سيدفع",
         "recipient_name" => "اسم المستلم",
         "recipient_phone" => "هاتف المستلم",
+        "area_id" => "المركز",
+        "desc" => "الوصف"
     ],
+
 ];

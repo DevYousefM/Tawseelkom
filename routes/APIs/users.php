@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Users\AuthController;
 use App\Http\Controllers\Api\Users\RouteController;
+use App\Http\Controllers\Api\Users\UserAddressController;
 use App\Http\Controllers\Api\Users\UserOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,4 +17,7 @@ Route::middleware(['jwt.verify'])->group(function () {
 
   Route::post("make-order", [UserOrderController::class, "create"]);
   Route::get("user-orders", [UserOrderController::class, "index"]);
+
+  Route::post("add-address", [UserAddressController::class, "store"]);
+  Route::get("user-addresses", [UserAddressController::class, "user_addresses"]);
 });
