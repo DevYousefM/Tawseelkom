@@ -14,6 +14,7 @@ Route::middleware(['jwt.verify'])->group(function () {
   Route::post('logout', [AuthController::class, "logout"]);
 
   Route::get('routes', [RouteController::class, "get_routes"]);
+  Route::get("/route", [RouteController::class, "single_route"]);
 
   Route::post("make-order", [UserOrderController::class, "create"]);
   Route::get("user-orders", [UserOrderController::class, "index"]);

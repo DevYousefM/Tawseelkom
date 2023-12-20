@@ -10,5 +10,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('public')->group(function () {
     Route::get("/areas", [PublicController::class, "areas"]);
     Route::get("/shipment-types", [PublicController::class, "shipment_types"]);
-    Route::get("/route", [PublicController::class, "single_route"]);
 });
