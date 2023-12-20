@@ -51,9 +51,6 @@
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1">السعر
                                         </th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                            colspan="1">أوامر
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,40 +62,20 @@
                                             <td>{{ $route->toArea->area }}</td>
                                             <td>{{ $route->shipmentType->title }}</td>
                                             <td>
-                                                @if ($route->price)
-                                                <div class="d-flex" style="gap: 5px">
-                                                    <span>
-                                                        {{ config('app.custom.currency') }}
-                                                    </span>
-                                                    <span>
-                                                        {{ $route->price }}
-                                                    </span>
-                                                </div>                                                @else
-                                                    <div style="width:130px">
-                                                        <form action="{{ route('update.route.price', $route->id) }}"
-                                                            class="input-group mb-3" method="post">
-                                                            @csrf
-                                                            @method('post')
-                                                            <span class="input-group-text px-2"
-                                                                style="font-size: 13px">{{ config('app.custom.currency') }}</span>
-                                                            <input type="number" name="price"
-                                                                value="{{ $route->price ?? 0 }}" style="width:10px"
-                                                                class="form-control text-center px-1">
-                                                            <button type="submit" style="font-size: 10px"
-                                                                class="btn btn-success btn-sm input-group-text bg-success"><i
-                                                                    class="fas fa-check"></i></button>
-                                                        </form>
-                                                    </div>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <div class="d-flex" style="justify-content: space-evenly">
-                                                    <a href="#" class="btn btn-sm btn-primary">تعديل</a>
-                                                    <form method="POST" style="width:fit-content" action="#">
+                                                <span class="d-none">{{ $route->price }}</span>
+                                                <div style="width:130px">
+                                                    <form action="{{ route('update.route.price', $route->id) }}"
+                                                        class="input-group mb-3" method="post">
                                                         @csrf
-                                                        @method('DELETE')
-                                                        <button onclick="return confirm('Are you sure you want to delete?')"
-                                                            type="submit" class="btn btn-sm btn-danger">حذف</button>
+                                                        @method('post')
+                                                        <span class="input-group-text px-2"
+                                                            style="font-size: 13px">{{ config('app.custom.currency') }}</span>
+                                                        <input type="number" name="price"
+                                                            value="{{ $route->price ?? 0 }}" style="width:10px"
+                                                            class="form-control text-center px-1">
+                                                        <button type="submit" style="font-size: 10px"
+                                                            class="btn btn-success btn-sm input-group-text bg-success"><i
+                                                                class="fas fa-check"></i></button>
                                                     </form>
                                                 </div>
                                             </td>

@@ -13,7 +13,6 @@ class RouteController extends Controller
     public function index()
     {
         $routes = Route::orderByRaw('price = 0 asc')->get();
-
         return view("dashboard.pages.routes.index", ["routes" => $routes]);
     }
     public function refresh()
@@ -29,7 +28,8 @@ class RouteController extends Controller
                         Route::create([
                             'from_area_id' => $fromArea->id,
                             'to_area_id' => $toArea->id,
-                            'shipment_type_id' => $type->id
+                            'shipment_type_id' => $type->id,
+                            'price' => 10,
                         ]);
                     }
                 }
