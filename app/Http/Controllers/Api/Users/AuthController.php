@@ -84,7 +84,7 @@ class AuthController extends Controller
         }
         $user = auth("api")->user();
         $userData = UserResource::make($user)->toArray($request);
-        return $this->apiResponse("user", array_merge(["access_token" => $token], $userData), "User registered and logged in successfully", 201);
+        return $this->apiResponse("user", array_merge(["access_token" => $token], $userData), "User registered and logged in successfully", 200);
     }
     public function logout()
     {

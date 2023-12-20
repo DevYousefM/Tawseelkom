@@ -59,6 +59,7 @@ class UserOrderController extends Controller
         ];
         // Store Data
         $order = UserOrder::create($order_data);
+        $redirect_url = '';
         if ($request->who_pay === "المرسل") {
             $payment = new TapPayment();
             $response = $payment->setUserId($user->id)
@@ -71,9 +72,14 @@ class UserOrderController extends Controller
             $order->update([
                 "payment_id" => $response["payment_id"],
             ]);
-            return $response;
+            $redirect_url =  $response["redirect_url"];
         }
-        return $this->apiResponse("order", $order, "User order created", 201);
+        if ($redirect_url === "") {
+            return $this->apiResponse("order",  $order, "User order created", 200);
+        } else {
+            $array = ["order" => $order, "redirect_url" => $redirect_url, "message" => "User order created", "status" => 200];
+            return response()->json($array, 200);
+        }
     }
     public function verifyPayment(Request $request)
     {

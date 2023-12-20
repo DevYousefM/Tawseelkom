@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function profile()
     {
         $delivery = auth("api_delivery")->user();
-        return $this->apiResponse("delivery", DeliveryResource::make($delivery), "User registered and logged in successfully", 201);
+        return $this->apiResponse("delivery", DeliveryResource::make($delivery), "User registered and logged in successfully", 200);
     }
     public function login(Request $request): JsonResponse
     {
@@ -49,7 +49,7 @@ class AuthController extends Controller
         }
         $delivery = auth("api_delivery")->user();
         $deliveryData = DeliveryResource::make($delivery)->toArray($request);
-        return $this->apiResponse("delivery", array_merge(["access_token" => $token], $deliveryData), "User registered and logged in successfully", 201);
+        return $this->apiResponse("delivery", array_merge(["access_token" => $token], $deliveryData), "User registered and logged in successfully", 200);
     }
     public function logout()
     {
