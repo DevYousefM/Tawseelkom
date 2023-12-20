@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserOrder extends Model
 {
@@ -23,5 +25,12 @@ class UserOrder extends Model
         "sender_name",
         "details"
     ];
-    
+    public function delivery_order(): HasOne
+    {
+        return $this->hasOne(DeliveryOrder::class);
+    }
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

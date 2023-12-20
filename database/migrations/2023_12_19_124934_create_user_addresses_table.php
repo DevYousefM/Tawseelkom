@@ -12,7 +12,9 @@ return new class extends Migration
             $table->id()->from(100);
             $table->foreignUlid("user_id")->references("id")->on("users")->onDelete("cascade");
             $table->string("name");
-            $table->foreignId("area_id")->references("id")->on("areas")->onDelete("cascade");
+            $table->foreignId("to")->references("id")->on("areas")->onDelete("cascade");
+            $table->foreignId("from")->references("id")->on("areas")->onDelete("cascade");
+            $table->string("recipient_phone");
             $table->text("desc");
             $table->boolean("is_default")->default(0);
             $table->timestamps();

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\AreaController;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\DeliveryController;
+use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\RouteController;
 use App\Http\Controllers\Web\ShipmentTypeController;
 use Illuminate\Support\Facades\Route;
@@ -48,5 +49,8 @@ Route::middleware(['is.admin'])->group(function () {
     Route::get('/', [RouteController::class, "index"])->name("routes");
     Route::get('/refresh-routes', [RouteController::class, "refresh"])->name("refresh.routes");
     Route::post('/update-price/{id}', [RouteController::class, "update_price"])->name("update.route.price");
+  });
+  Route::prefix('orders')->group(function () {
+    Route::get('/', [OrderController::class, "index"])->name("orders");
   });
 });

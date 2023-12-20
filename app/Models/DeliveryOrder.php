@@ -18,5 +18,4 @@ class DeliveryOrder extends Model
     {
         return $this->belongsTo(UserOrder::class);
     }
-    
 }
