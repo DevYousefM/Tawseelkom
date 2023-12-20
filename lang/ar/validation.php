@@ -235,7 +235,10 @@ return [
         "recipient_name" => "اسم المستلم",
         "recipient_phone" => "هاتف المستلم",
         "area_id" => "المركز",
-        "desc" => "الوصف"
+        "desc" => "الوصف",
+        "from_area_id" => "موقع المرسل",
+        "to_area_id" => "موقع المستلم",
+        "shipment_type_id" => "نوع الشحنة"
     ],
 
 ];

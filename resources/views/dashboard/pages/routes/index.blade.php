@@ -51,6 +51,9 @@
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                             colspan="1">السعر
                                         </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1">المسافة
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,6 +75,24 @@
                                                             style="font-size: 13px">{{ config('app.custom.currency') }}</span>
                                                         <input type="number" name="price"
                                                             value="{{ $route->price ?? 0 }}" style="width:10px"
+                                                            class="form-control text-center px-1">
+                                                        <button type="submit" style="font-size: 10px"
+                                                            class="btn btn-success btn-sm input-group-text bg-success"><i
+                                                                class="fas fa-check"></i></button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="d-none">{{ $route->distance }}</span>
+                                                <div style="width:130px">
+                                                    <form action="{{ route('update.route.distance', $route->id) }}"
+                                                        class="input-group mb-3" method="post">
+                                                        @csrf
+                                                        @method('post')
+                                                        <span class="input-group-text px-2"
+                                                            style="font-size: 13px">km</span>
+                                                        <input type="number" step="any" name="distance"
+                                                            value="{{ $route->distance ?? 0 }}" style="width:10px"
                                                             class="form-control text-center px-1">
                                                         <button type="submit" style="font-size: 10px"
                                                             class="btn btn-success btn-sm input-group-text bg-success"><i

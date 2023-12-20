@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Route extends Model
 {
     use HasFactory;
-    protected $fillable = ["from_area_id", "to_area_id", "shipment_type_id", "price"];
+    protected $fillable = ["from_area_id", "to_area_id", "shipment_type_id", "price", "distance"];
 
     public function fromArea(): BelongsTo
     {

@@ -49,6 +49,7 @@ Route::middleware(['is.admin'])->group(function () {
     Route::get('/', [RouteController::class, "index"])->name("routes");
     Route::get('/refresh-routes', [RouteController::class, "refresh"])->name("refresh.routes");
     Route::post('/update-price/{id}', [RouteController::class, "update_price"])->name("update.route.price");
+    Route::post('/update-distance/{id}', [RouteController::class, "update_distance"])->name("update.route.distance");
   });
   Route::prefix('orders')->group(function () {
     Route::get('/', [OrderController::class, "index"])->name("orders");

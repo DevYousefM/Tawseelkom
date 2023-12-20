@@ -47,4 +47,14 @@ class RouteController extends Controller
         }
         return redirect()->back();
     }
+    public function update_distance(Request $request, $id)
+    {
+        $route = Route::findOrFail($id);
+        if (!empty($request->distance) && $request->distance > 0 && is_numeric($request->distance)) {
+            $route->update([
+                "distance" => $request->distance
+            ]);
+        }
+        return redirect()->back();
+    }
 }

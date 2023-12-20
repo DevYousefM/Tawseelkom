@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreignId('to_area_id')->references('id')->on('areas')->onDelete("cascade");
             $table->foreignId('shipment_type_id')->references('id')->on('shipment_types')->onDelete("cascade");
             $table->integer("price")->nullable();
+            $table->float("distance")->nullable();
             $table->timestamps();
         });
     }
