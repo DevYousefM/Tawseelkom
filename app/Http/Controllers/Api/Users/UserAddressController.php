@@ -30,7 +30,7 @@ class UserAddressController extends Controller
             "name" => $request->name,
             "area_id" => $request->area_id,
             "desc" => $request->desc,
-            "is_default" => $request->is_default,
+            "is_default" => $request->is_default ?? 0,
         ]);
         return $this->apiResponse("user_address", $address, "تم اضافة العنوان", 200);
     }

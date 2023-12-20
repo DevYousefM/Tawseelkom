@@ -91,4 +91,9 @@ class AuthController extends Controller
         auth("api")->logout();
         return response()->json(["message" => "Logout Success", "status" => 200], 200);
     }
+    public function profile()
+    {
+        $user = auth("api")->user();
+        return $this->apiResponse("user", $user, "بيانات حساب المستخدم", 200);
+    }
 }

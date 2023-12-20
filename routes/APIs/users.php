@@ -20,5 +20,7 @@ Route::middleware(['jwt.verify'])->group(function () {
 
   Route::post("add-address", [UserAddressController::class, "store"]);
   Route::get("user-addresses", [UserAddressController::class, "user_addresses"]);
+
+  Route::get("user-profile", [AuthController::class, "profile"]);
 });
 Route::get('/orders/verify/{payment?}', [UserOrderController::class, "verifyPayment"])->name('verify-payment');

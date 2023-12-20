@@ -5,4 +5,5 @@
     top: 20%;
     left: 12px;
     cursor: pointer;
+    z-index: 99;
 }
