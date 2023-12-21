@@ -51,6 +51,7 @@ class UserOrderController extends Controller
             "to" => $route->toArea->area,
             "shipment_type" => $route->shipmentType->title,
             "price" => $route->price,
+            "distance" => $route->distance,
             "who_pay" => $request->who_pay,
             "recipient_name" => $request->recipient_name,
             "recipient_phone" => $request->recipient_phone,

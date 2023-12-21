@@ -20,6 +20,7 @@ class OrderDashResource extends JsonResource
             "to" => $this->to,
             "shipment_type" => $this->shipment_type,
             "price" => $this->price . " KWD",
+            "distance" => $this->distance . " Km",
             "payment_status" => $this->payment_status,
             "payment_id" => $this->payment_id,
             "status" => $this->status,

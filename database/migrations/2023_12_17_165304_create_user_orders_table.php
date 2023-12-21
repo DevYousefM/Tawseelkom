@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("to");
             $table->string("shipment_type");
             $table->string("price");
+            $table->float("distance");
             // Payment data
             $table->string("who_pay");
             $table->string("payment_status")->default("غير مدفوع");

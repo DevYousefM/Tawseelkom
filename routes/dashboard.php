@@ -6,6 +6,8 @@ use App\Http\Controllers\Web\DeliveryController;
 use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\RouteController;
 use App\Http\Controllers\Web\ShipmentTypeController;
+use App\Http\Resources\OrderDashResource;
+use App\Models\UserOrder;
 use Illuminate\Support\Facades\Route;
 
 
@@ -53,5 +55,9 @@ Route::middleware(['is.admin'])->group(function () {
   });
   Route::prefix('orders')->group(function () {
     Route::get('/', [OrderController::class, "index"])->name("orders");
+    Route::get('/json', function () {
+      $orders = UserOrder::with('delivery_order')->with("user")->get();
+      return OrderDashResource::collection($orders);
+    });
   });
 });

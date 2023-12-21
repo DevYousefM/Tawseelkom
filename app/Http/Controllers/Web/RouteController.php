@@ -30,6 +30,7 @@ class RouteController extends Controller
                             'to_area_id' => $toArea->id,
                             'shipment_type_id' => $type->id,
                             'price' => 10,
+                            'distance' => 1,
                         ]);
                     }
                 }

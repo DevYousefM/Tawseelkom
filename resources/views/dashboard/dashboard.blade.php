@@ -79,11 +79,10 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>65</h3>
-
-                            <p>اجمالي الطلبات</p>
+                            <p>عدد المستخدمين</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="ion ion-person"></i>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,7 @@ class UserOrder extends Model
         "to",
         "shipment_type",
         "price",
+        "distance",
         "who_pay",
         "payment_status",
         "payment_id",

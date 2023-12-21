@@ -12,8 +12,6 @@ class OrderController extends Controller
     public function index()
     {
         $orders = UserOrder::with('delivery_order')->with("user")->get();
-        return OrderDashResource::collection($orders);
-        // return $orders;
-        // return view("dashboard.pages.orders.index");
+        return view("dashboard.pages.orders.index", ["orders" => OrderDashResource::collection($orders)]);
     }
 }
