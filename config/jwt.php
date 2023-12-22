@@ -101,8 +101,8 @@ return [
     |
     */
 
-    'ttl' => env('JWT_TTL', 4320),
-    // 4320 Minutes => 3 Days
+    'ttl' => env('JWT_TTL', null),
+    // Null mean that no expiration data fot token
 
     /*
     |--------------------------------------------------------------------------
@@ -148,7 +148,6 @@ return [
     'required_claims' => [
         'iss',
         'iat',
-        'exp',
         'nbf',
         'sub',
         'jti',

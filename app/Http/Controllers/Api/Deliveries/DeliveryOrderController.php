@@ -29,7 +29,6 @@ class DeliveryOrderController extends Controller
         $delivery = auth("api_delivery")->user();
         $check_order = DeliveryOrder::where("user_order_id", $id)->where("delivery_username", $delivery->username)->get();
         if ($check_order) {
-
             $delivery_order = DeliveryOrder::find($id);
             $delivery_order->user_order->update([
                 "status" => "تم التسليم",
