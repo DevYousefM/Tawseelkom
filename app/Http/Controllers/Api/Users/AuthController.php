@@ -96,4 +96,14 @@ class AuthController extends Controller
         $user = auth("api")->user();
         return $this->apiResponse("user", $user, "بيانات حساب المستخدم", 200);
     }
+    public function delete_account($id)
+    {
+
+        $user = auth("api")->user();
+        if (!$user) {
+            return $this->apiResponse("errors", "هذا الحساب غير موجود", "هذا الحساب غير موجود", 404);
+        }
+        $user->delete();
+        return $this->apiResponse("user", $user, "تم حذف حساب المستخدم", 200);
+    }
 }

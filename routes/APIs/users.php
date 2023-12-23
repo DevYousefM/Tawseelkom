@@ -14,7 +14,7 @@ Route::middleware(['jwt.verify'])->group(function () {
   Route::post('logout', [AuthController::class, "logout"]);
 
   Route::get('routes', [RouteController::class, "get_routes"]);
-  Route::get("/route", [RouteController::class, "single_route"]);
+  Route::get("route", [RouteController::class, "single_route"]);
 
   Route::post("make-order", [UserOrderController::class, "create"]);
   Route::get("user-orders", [UserOrderController::class, "index"]);
@@ -23,5 +23,7 @@ Route::middleware(['jwt.verify'])->group(function () {
   Route::get("user-addresses", [UserAddressController::class, "user_addresses"]);
 
   Route::get("user-profile", [AuthController::class, "profile"]);
+
+  Route::delete("delete-user-account/{id}", [AuthController::class, "delete_account"]);
 });
-Route::get('/orders/verify/{payment?}', [UserOrderController::class, "verifyPayment"])->name('verify-payment');
+Route::get('orders/verify/{payment?}', [UserOrderController::class, "verifyPayment"])->name('verify-payment');
