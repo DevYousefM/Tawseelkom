@@ -21,7 +21,7 @@ class DeliveryOrderController extends Controller
         $delivery = auth("api_delivery")->user();
         $taken_orders = DeliveryOrder::whereHas("user_order", function ($query) {
             $query->where("status", "استلم المندوب الطلب");
-        })->where("delivery_username", $delivery->username)->get();
+        })->where("delivery_username", $delivery->username)->with("user_order")->get();
         return $this->apiResponse("taken_orders", $taken_orders, "طلبات المندوب", 200);
     }
     public function update_order($id)
@@ -51,6 +51,9 @@ class DeliveryOrderController extends Controller
         $check_order = UserOrder::find($id);
         if (!$check_order)
             return $this->apiResponse("error", "هذا الطلب غير موجود", "هذا الطلب غير موجود", 404);
+        if ($check_order->status === "استلم المندوب الطلب")
+            return $this->apiResponse("error", "هذا الطلب تم استلامه بالفعل", "هذا الطلب تم استلامه بالفعل", 404);
+
         $delivery = auth("api_delivery")->user();
         $order_id = $id;
         $delivery_order = DeliveryOrder::create([
@@ -61,6 +64,6 @@ class DeliveryOrderController extends Controller
         $check_order->update([
             "status" => "استلم المندوب الطلب",
         ]);
-        return $this->apiResponse("delivery_order", $delivery_order, "تم تسجيل الطلب بنجاح", 200);
+        return $this->apiResponse("delivery_order", $delivery_order->with("user_order")->get(), "تم تسجيل الطلب بنجاح", 200);
     }
 }

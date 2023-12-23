@@ -25,6 +25,10 @@ class UserOrderController extends Controller
 
     public function create(Request $request)
     {
+        $user = auth("api")->user();
+        if (!$user) {
+            return $this->apiResponse("error", "يجب تسجيل الدخول", "يجب تسجيل الدخول", 404);
+        }
         $validator = Validator::make($request->all(), [
             "from_area_id" => "required|exists:areas,id",
             "to_area_id" => "required|exists:areas,id",
@@ -44,7 +48,6 @@ class UserOrderController extends Controller
             return $this->apiResponse("error", "المسار غير موجود", "المسار غير موجود", 404);
         }
 
-        $user = auth("api")->user();
         $order_data = [
             "user_id" => $user->id,
             "from" => $route->fromArea->area,
