@@ -30,6 +30,6 @@ class RouteController extends Controller
             return $this->apiResponse("errors", $this->errorsResponse($validator), "Validation Error", 422);
         }
         $route = Route::where("from_area_id", $request->from_area_id)->where("to_area_id", $request->to_area_id)->where("shipment_type_id", $request->shipment_type_id)->first();
-        return $this->apiResponse("route", RouteResource::collection($route), "بيانات المسار", 200);
+        return $this->apiResponse("route", RouteResource::make($route), "بيانات المسار", 200);
     }
 }
