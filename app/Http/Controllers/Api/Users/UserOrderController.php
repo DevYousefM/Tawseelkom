@@ -95,7 +95,7 @@ class UserOrderController extends Controller
         if ($response["success"]) {
             $payment_db->update(["payment_status" => "تم الدفع"]);
         }
-        return redirect()->route("payment-status", ["status" => $status, "msg" => $msg]);
+        return redirect()->route("payment-status", ["status" => $status ? "success" : "failed", "msg" => $msg]);
     }
     public function payment_status(Request $request)
     {
