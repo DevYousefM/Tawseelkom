@@ -90,11 +90,17 @@ class UserOrderController extends Controller
         $payment = new TapPayment();
         $response = $payment->verify($request);
         $msg = $response["message"];
-        $stu = $response["success"];
+        $status = $response["success"];
         $payment_db = UserOrder::where("payment_id", $response["payment_id"])->first();
         if ($response["success"]) {
             $payment_db->update(["payment_status" => "تم الدفع"]);
         }
-        return view("payment_status", compact("msg"), compact("stu"));
+        return redirect()->route("payment-status", ["status" => $status, "msg" => $msg]);
+    }
+    public function payment_status(Request $request)
+    {
+        $status = $request->query('status');
+        $msg = $request->query('msg');
+        return view("payment_status", compact("msg"), compact("status"));
     }
 }

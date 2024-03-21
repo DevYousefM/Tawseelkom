@@ -27,3 +27,4 @@ Route::middleware(['jwt.verify'])->group(function () {
   Route::delete("delete-user-account/{id}", [AuthController::class, "delete_account"]);
 });
 Route::get('orders/verify/{payment?}', [UserOrderController::class, "verifyPayment"])->name('verify-payment');
+Route::get('payment-status', [UserOrderController::class,"payment_status"])->name('payment-status');

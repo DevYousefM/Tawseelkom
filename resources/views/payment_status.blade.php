@@ -34,7 +34,7 @@
 <body>
 <div class="container">
     <h1>Payment Status</h1>
-    <p class="{{$stu?"success":"failure"}}" style="text-transform: capitalize">{{$msg}},شكرا لك</p>
+    <p class="{{$status?"success":"failure"}}" style="text-transform: capitalize">{{$msg}},شكرا لك</p>
 </div>
 </body>
 </html>
