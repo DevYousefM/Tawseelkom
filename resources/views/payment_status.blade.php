@@ -27,7 +27,7 @@
             color: green;
         }
 
-        .failure {
+        .failed {
             color: red;
         }
     </style>
