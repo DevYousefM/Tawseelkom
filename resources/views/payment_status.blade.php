@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Payment Status</title>
     <style>
@@ -31,10 +32,12 @@
         }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <h1>Payment Status</h1>
-    <p class="{{$status?"success":"failure"}}" style="text-transform: capitalize">{{$msg}},شكرا لك</p>
-</div>
+    <div class="container">
+        <h1>Payment Status</h1>
+        <p class="{{ $status }}" style="text-transform: capitalize">{{ $msg }},شكرا لك</p>
+    </div>
 </body>
+
 </html>
