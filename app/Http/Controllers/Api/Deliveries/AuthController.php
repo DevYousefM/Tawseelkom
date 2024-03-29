@@ -56,4 +56,12 @@ class AuthController extends Controller
         auth("api_delivery")->logout();
         return response()->json(["message" => "Logout Success", "status" => 200], 200);
     }
+    public function delete_profile(){
+        $delivery = auth("api_delivery")->user();
+        if (!$delivery) {
+            return $this->apiResponse("errors", "هذا الحساب غير موجود", "هذا الحساب غير موجود", 404);
+        }
+        $delivery->delete();
+        return $this->apiResponse("delivery", $delivery, "تم حذف حساب المندوب", 200);
+    }
 }

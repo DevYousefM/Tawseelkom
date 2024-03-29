@@ -10,6 +10,7 @@ Route::post('login', [AuthController::class, "login"]);
 Route::middleware(['jwt.verify'])->group(function () {
   Route::get('profile', [AuthController::class, "profile"]);
   Route::post('logout', [AuthController::class, "logout"]);
+  Route::post('delete-profile', [AuthController::class,"delete_profile"]);
 
   Route::get('orders', [DeliveryOrderController::class, "index"]);
   Route::post('take-order/{id}', [DeliveryOrderController::class, "take_order"]);

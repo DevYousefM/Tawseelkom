@@ -98,7 +98,6 @@ class AuthController extends Controller
     }
     public function delete_account($id)
     {
-
         $user = auth("api")->user();
         if (!$user) {
             return $this->apiResponse("errors", "هذا الحساب غير موجود", "هذا الحساب غير موجود", 404);
